@@ -1,39 +1,16 @@
 ﻿#include "BobAndAliceGameSubsystem.h"
 
 void UBobAndAliceGameSubsystem::Initialize(
-    FSubsystemCollectionBase &Collection) {
-  Super::Initialize(Collection);
+	FSubsystemCollectionBase &Collection) {
+	Super::Initialize(Collection);
+	timeRemaining = 45.0f;
 }
 
 void UBobAndAliceGameSubsystem::Deinitialize() { Super::Deinitialize(); }
 
-void UBobAndAliceGameSubsystem::SetPackageCollected(bool bCollected)
+void UBobAndAliceGameSubsystem::SetData(bool currentDelivered, float currentTime, bool currentCollected)
 {
-	bIsPackageCollected = bCollected;
+	timeRemaining = currentTime;
+	isDelivered = currentDelivered;
+	isCollected = currentCollected;
 }
-
-void UBobAndAliceGameSubsystem::SetPackageDelivered(bool bDelivered)
-{
-	 bIsPackageDelivered = bDelivered;
-}
-
-void UBobAndAliceGameSubsystem::SetRemainingTime(float Time)
-{
-	TimeRemaining = Time;
-}
-
-bool UBobAndAliceGameSubsystem::GetPackageCollected() const
-{
-	return bIsPackageCollected;
-}
-
-bool UBobAndAliceGameSubsystem::GetPackageDelivered() const
-{
-	return bIsPackageDelivered;
-}
-
-float UBobAndAliceGameSubsystem::GetRemainingTime() const
-{
-	return TimeRemaining;
-}
-
